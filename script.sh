@@ -7,7 +7,7 @@ command_fifo=/tmp/mpv-test-fifo-$$-$RANDOM
 trap 'rm -f "$command_fifo"' EXIT INT TERM HUP
 mkfifo -m 600 "$command_fifo"
 
-mpv --no-config --idle --input-file="$command_fifo" &
+mpv --no-config --no-osc --idle --input-file="$command_fifo" &
 mpv_pid=$!
 
 printf >>"$command_fifo" 'set pause yes\n'
